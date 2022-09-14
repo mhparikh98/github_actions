@@ -18,6 +18,7 @@ jobs:
   job1:
     name: test_env
     runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.env}}
     env:
       ENV: ${{ github.event.inputs.env}}
       SECRET_ENV: ${{ secrets.SECRET_ENV }}
@@ -32,8 +33,14 @@ jobs:
           if [ "$ENV" == "qa" ]; then
             echo "success in if condition"
           fi
-          if [ "$SECRET_ENV" == "Meet" ]; then
-            echo  "success fully called repository secret"
+          if [ "$SECRET_ENV" == "meet_qa" ]; then
+            echo  "successfully called qa environemnt repository secret"
+          elif [ "$SECRET_ENV" == "meet_dev" ]; then
+            echo  "successfully called dev environemnt repository secret"
+          elif [ "$SECRET_ENV" == "meet_staging" ]; then
+            echo  "successfully called staging environemnt repository secret"
+          else
+            echo "Incorrect Value"
           fi
           echo "$SECRET_ENV printed" 
           echo "Last statement executed"
