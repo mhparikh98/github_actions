@@ -4,14 +4,15 @@ on:
     branches:
       - main
     inputs:
-      description: Environment
-      required: True
-      default: qa
-      type: choice
-      options:
-        - qa
-        - dev
-        - staging
+      env:
+        description: Environment
+        required: True
+        default: qa
+        type: choice
+        options:
+          - qa
+          - dev
+          - staging
 
 jobs:
   job1:
