@@ -19,7 +19,7 @@ jobs:
     name: test_env
     runs-on: ubuntu-latest
     env:
-      ENV: QA
+      ENV: ${{ github.event.inputs.env}}
       SECRET_ENV: ${{ secrets.SECRET_ENV }}
     steps:
       - name: Static
@@ -29,4 +29,8 @@ jobs:
       - name: Environment variable
         shell: bash
         run: |
-          echo "$SECRET_ENV" 
+          if [ "$ENV" == "qa" ]; then
+            echo "success in if condition"
+          fi
+          echo "$SECRET_ENV printed" 
+          echo "Last statement executed"
