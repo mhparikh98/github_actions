@@ -1,0 +1,31 @@
+name: Test Env
+on:
+  workflow_dispatch:
+    branches:
+      - main
+    inputs:
+      description: Environment
+      required: True
+      default: qa
+      type: choice
+      options:
+        - qa
+        - dev
+        - staging
+
+jobs:
+  job1:
+    name: test_env
+    runs-on: ubuntu-latest
+    env:
+      ENV: QA
+      SECRET_ENV: ${{ secrets.SECRET_ENV }}
+    steps:
+      - name: Static
+        shell: bash
+        run: |
+          echo "Sucess Github actions"
+      - name: Environment variable
+        shell: bash
+        run: |
+          echo "$SECRET_ENV" 
