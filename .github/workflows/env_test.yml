@@ -32,7 +32,7 @@ jobs:
           if [ "$ENV" == "qa" ]; then
             echo "success in if condition"
           fi
-          if [ "$SECRET_ENV" == "Meet"]; then
+          if [ "$SECRET_ENV" == "Meet" ]; then
             echo  "success fully called repository secret"
           fi
           echo "$SECRET_ENV printed" 
